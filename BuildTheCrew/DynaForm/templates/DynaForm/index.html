@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'DynaForm/style.css' %}">
+
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>Argo's Form</title>
+
+  </head>
+
+  <body>
+
+    <header>
+
+    <h1>
+      <img src="https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png" alt="Wild Code School logo" />
+      Les Argonautes
+    </h1>
+
+    </header>
+
+    <main>
+
+      <!-- New member form -->
+       <h2>Ajouter un(e) Argonaute</h2>
+
+       <form action="/index/" method="post" class="new-member-form">
+          {% csrf_token %}
+          {{ form }}
+          <input type="submit" value="Envoyer">
+      </form>
+
+      <!-- Member list -->
+      <h2>Membres de l'équipage</h2>
+
+      {% if latest_argonaute_list %}
+
+      <div class="wrapper">
+          <div class="one">
+            <ul>
+              {% for a in argo_list5 %}
+                <li>{{ a.argo_name }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="two">
+            <ul>
+              {% for a in argo_list10 %}
+                <li>{{ a.argo_name }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="three">
+            <ul>
+              {% for a in argo_list15 %}
+                <li>{{ a.argo_name }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+      {% else %}
+
+      <p>None Argonaute found :/</p>
+
+      {% endif %}
+
+    </main>
+
+    <footer>
+
+      <p>Réalisé par Cyril en Anthestérion de l'an 2021 avant JC</p>
+
+    </footer>
+
+  </body>
+
+</html>
